@@ -54,7 +54,7 @@ if st.sidebar.button("Prever"):
     with col1:
     ####  Explicação dos resultados ####
     ### Shap
-        st.subheader("🔍 Explicação com SHAP")
+        st.subheader("Explicação com SHAP")
         explainer = shap.Explainer(modelo)
         shap_values = explainer(df_dados_processados)  # seu dataframe X com as features
 
@@ -64,7 +64,7 @@ if st.sidebar.button("Prever"):
 
     ### Lime
     with col2:
-        st.subheader("🧠 Explicação com LIME")
+        st.subheader("Explicação com LIME")
         # Criar o explicador    
         explainer = lime.lime_tabular.LimeTabularExplainer(
             training_data=df_dados_processados.values,
