@@ -18,7 +18,7 @@ from sklearn.preprocessing import OneHotEncoder  # Para codificar variáveis cat
 from sklearn.impute import SimpleImputer  # Para lidar com valores faltantes
 from xgboost import XGBClassifier
 
-df_dados_input = pd.read_csv('DatabaseDengue.csv',header=0)
+df_dados_input = pd.read_csv('DataBaseDengue.csv',header=0)
 df_dados_processados = pd.read_csv('DataBaseDengueProcessada.csv',header=0)
 df_dados_processados.drop('Class', axis=1, inplace=True)
 # Carregar modelo
