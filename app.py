@@ -47,8 +47,8 @@ if st.sidebar.button("Prever"):
     entrada = df_dados_processados
     # EXIBE OS DADOS DA CIDADE AQUI
     # Mostra título da seção
-    st.subheader(f"Indicadores da cidade de {cidade_selecionada}") 
-    col1, col2,col3= st.columns(3) # ,ColCategorica 
+    st.subheader(f"Indicadores quantitativos da cidade de {cidade_selecionada}") 
+    col1, col2= st.columns(2) 
 
     with col1:
         st.metric("População Total", f"{df_filtrado['POP_TOT'].values[0]:}")##.replace(",", "."))
@@ -66,12 +66,15 @@ if st.sidebar.button("Prever"):
         st.metric("IN022_AE - Consumo médio per capita de água", f"{df_filtrado['IN022_AE'].values[0]}")
         st.metric("IN049_AE - Índice de perdas na distribuição de água(%)", f"{df_filtrado['IN049_AE'].values[0]}")
         
-    with col3:
-        st.write(f"📊 Indicadores categóricos da cidade de {cidade_selecionada}")
+    st.subheader(f"Indicadores qualitativos  {cidade_selecionada}") 
+    colCat1, colCat2= st.columns(2) 
+    #st.write(f"📊 Indicadores categóricos da cidade de {cidade_selecionada}")
+    with colCat1:
         status = "✅ Sim" if df_filtrado['CS001'].values[0] == "Sim" else "❌ Não"
         st.write(f"📍CS001 - Coleta seletiva de resíduos no município: {status}")
         status = "✅ Sim" if df_filtrado['Msau28'].values[0] == "Sim" else "❌ Não"
         st.write(f"📍Msau28 - Programa de Agentes Comunitários de Saúde - existência: {status}")
+    with colCat2:
         status = "✅ Sim" if df_filtrado['Mgrd06'].values[0] == "Sim" else "❌ Não"
         st.write(f"📍Mgrd06 - O município foi atingido por alagamentos nos últimos 4 anos: {status}")
         status = "✅ Sim" if df_filtrado['Mgrd08'].values[0] == "Sim" else "❌ Não"
